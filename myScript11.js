@@ -156,5 +156,96 @@ function mensaje(){
 //EnventListener()
 
 //Ejemplo1
+function miPrueba(){
+    alert("Hola estoy usando un controlador de evento");
+};
 
+document.getElementById("miBtn").addEventListener("click", miPrueba);
+
+
+//Ejemplo 2, varios controladores al mismo elemento
+function miPrueba2(){
+    alert("Estoy controlando de nuevo");
+};
+
+function miPrueba3(){
+    alert("Este es otro evento controlado");
+};
+
+var eventosControlados = document.getElementById("miBtn2");
+
+eventosControlados.addEventListener("click", miPrueba2);
+eventosControlados.addEventListener("click", miPrueba3);
+
+
+//Ejmemplo 3, varios controladores al mismo elemento con diferente evento
+function madProof1(){
+    document.getElementById("demo11.11").innerHTML += "Moused over! <br>";
+};
+
+function madProof2(){
+    document.getElementById("demo11.11").innerHTML += "Hiciste Click! <br>";
+};
+
+function madProof3(){
+    document.getElementById("demo11.11").innerHTML += "Moused out! <br>";
+};
+
+var eventoLoco = document.getElementById("miBtn3");
+
+eventoLoco.addEventListener("mouseover", madProof1);
+eventoLoco.addEventListener("click", madProof2);
+eventoLoco.addEventListener("mouseout", madProof3);
+
+
+//Ejemplo 4, controlador al objeto ventana
+function sizeMath(){
+    document.getElementById("demo11.12").innerHTML = Math.random();
+};
+
+window.addEventListener("resize", sizeMath);
+
+
+//Ejemplo 5, pasar parametros al controlador de eventos
+function myOperation(a, b){
+    document.getElementById("demo11.13").innerHTML = a * b;
+};
+
+let valor1 = 5;
+let valor2 = 7;
+
+document.getElementById("miBtn4").addEventListener("click", function(){
+    myOperation(valor1, valor2)
+});
+
+
+//Ejemplo 6, Bubbling y Capturing
+document.getElementById("demo1114").addEventListener("click", function(){
+    alert("Diste click en el elemnto BLANCO, burbujeo");
+}, false);
+
+document.getElementById("miDivi1").addEventListener("click", function(){
+    alert("Diste click en el elemnto NARANJA, burbujeo");
+}, false);
+
+document.getElementById("demo1115").addEventListener("click", function(){
+    alert("Diste click en el elemnto BLANCO, captura");
+}, true);
+
+document.getElementById("miDivi2").addEventListener("click", function(){
+    alert("Diste click en el elemnto NARANJA, captura");
+}, true);
+
+
+//Ejemplo 7, remover el controlador. removeEventListener()
+
+function mathMove(){
+    document.getElementById("demo11.16").innerHTML = Math.random();
+};
+
+function removerMovimiento(){
+    document.getElementById("miDivi3").removeEventListener("mousemove", mathMove);
+}
+
+document.getElementById("miDivi3").addEventListener("mousemove", mathMove);
 
